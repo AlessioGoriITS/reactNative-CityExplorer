@@ -1,15 +1,15 @@
 # CityExplorer
 
-App mobile React Native per scoprire luoghi e attrazioni italiane.
+App mobile React Native per scoprire luoghi, monumenti e attrazioni di Lucca.
 
 ## Funzionalità
 
-- elenco di destinazioni con ricerca per nome, città e categoria;
+- elenco di luoghi di Lucca con ricerca per nome e categoria;
 - schermata di dettaglio con possibilità di salvare un luogo;
 - schermate Preferiti e Impostazioni;
 - tema chiaro/scuro tramite Context API;
 - navigazione tra più schermate con React Navigation;
-- dati demo locali, senza chiavi API necessarie.
+- dati demo locali di Lucca, senza chiavi API necessarie.
 
 ## Avvio del progetto
 
