@@ -1,13 +1,11 @@
 # Fonti delle fotografie
 
-Le foto sono caricate via HTTPS dal sito del Comune di Lucca; richiedono una connessione internet. Le schede mostrano un collegamento alla pagina di provenienza su Turismo Lucca. Se una foto non si carica, l'app mostra uno stato alternativo.
+Tutte le 29 attrazioni hanno una fotografia remota, caricata tramite HTTPS e mostrata nelle card e nei dettagli. Per ogni immagine, `src/data/placePhotos.ts` riporta URL, descrizione, pagina di provenienza e credito. Il pulsante “Fonte della fotografia” apre quella pagina.
 
-| Attrazione | Pagina di provenienza |
-| --- | --- |
-| Palazzo Pfanner | https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-pfanner/ |
-| Villa Bottini | https://turismo.lucca.it/le-attrazioni-di-lucca/ville/villa-bottini/ |
-| Chiesa di Santa Caterina | https://turismo.lucca.it/le-attrazioni-di-lucca/chiese/chiesa-di-santa-caterina/ |
-| Palazzo Orsetti | https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-orsetti/ |
-| Piazza San Francesco | https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/piazza-san-francesco/ |
+28 fotografie provengono da Comune di Lucca e Turismo Lucca. Per Via Fillungo la fonte è la pagina Lucca Accessibile; per Santi Giovanni e Reparata è la scheda della chiesa, anziché quella del complesso museale.
 
-Gli URL delle immagini sono quelli indicati nei metadati delle rispettive pagine ufficiali, consultati il 29 settembre 2026. I diritti delle immagini restano ai rispettivi titolari; la licenza del codice del progetto non si estende alle fotografie. Non è stata verificata una licenza di redistribuzione.
+La foto del Baluardo San Martino ritrae l'antica torre di guardia ed è di **Palickap**, pubblicata su [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lucca,_Antica_torre_di_guardia_medievale.jpg) con licenza [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Nell'app è ridimensionata e inquadrata nel riquadro, senza modificare il file originale.
+
+Le immagini richiedono internet. Se non si caricano, l'app mostra “Foto non disponibile” e mantiene accessibili testo e link. I diritti delle fotografie restano ai titolari; la licenza del codice non si estende alle immagini. Per quelle dei portali comunali non è stata verificata una licenza di redistribuzione.
+
+Verifica delle fonti: 29 settembre 2026.

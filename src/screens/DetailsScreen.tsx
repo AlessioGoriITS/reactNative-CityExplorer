@@ -16,11 +16,11 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
   const [favorite, setFavorite] = useState(false);
   const [openingLink, setOpeningLink] = useState(false);
   const officialLink = place ? officialLinks[place.id] : undefined;
-  async function openOfficialLink() {
-    if (!officialLink || openingLink) return;
+  async function openLink(url?: string) {
+    if (!url || openingLink) return;
     setOpeningLink(true);
     try {
-      await Linking.openURL(officialLink.url);
+      await Linking.openURL(url);
     } catch {
       Alert.alert('Link non aperto', 'Non è stato possibile aprire il sito. Riprova tra poco.');
     } finally {
@@ -33,9 +33,10 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
   return <ScrollView style={{ backgroundColor: c.background }} contentContainerStyle={[styles.content, { paddingBottom: 24 + insets.bottom }]}>
     {placePhotos[place.id] ? <View>
       <View style={{ borderRadius: 24, overflow: 'hidden' }}><PlacePhoto key={place.id} id={place.id} /></View>
-      <Button icon="open-in-new" onPress={openOfficialLink} disabled={openingLink} accessibilityRole="link"
-        accessibilityLabel="Apri la fonte della fotografia su Turismo Lucca" labelStyle={{ fontSize: 12 }}
-        contentStyle={{ minHeight: 44 }}>Fonte foto: Turismo Lucca</Button>
+      <Button icon="open-in-new" onPress={() => openLink(placePhotos[place.id]?.sourceUrl)} disabled={openingLink} accessibilityRole="link"
+        accessibilityLabel="Apri la fonte e i crediti della fotografia" labelStyle={{ fontSize: 12 }}
+        contentStyle={{ minHeight: 44 }}>Fonte della fotografia</Button>
+      <Text style={{ color: c.muted, fontSize: 12, textAlign: 'center', lineHeight: 18 }}>{placePhotos[place.id]?.credit}</Text>
     </View> : <View style={[styles.hero, { backgroundColor: c.tint }]}>
       <View style={[styles.symbol, { borderColor: c.primary }]}><Icon source={placeIcon(place.category)} size={62} color={c.primary} /></View>
       <Text style={[styles.heroLabel, { color: c.primary }]}>LUCCA · CITYEXPLORER</Text>
@@ -51,7 +52,7 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
         <Text style={{ color: c.muted, fontSize: 13, lineHeight: 20, marginBottom: 12 }}>
           {officialLink.publisher}{officialLink.isPdf ? ' · Guida delle Mura in PDF' : ' · Approfondisci il luogo'}
         </Text>
-        <Button icon="open-in-new" mode="outlined" onPress={openOfficialLink} loading={openingLink} disabled={openingLink}
+        <Button icon="open-in-new" mode="outlined" onPress={() => openLink(officialLink.url)} loading={openingLink} disabled={openingLink}
           accessibilityRole="link" accessibilityLabel={`Apri ${officialLink.publisher}${officialLink.isPdf ? ', documento PDF' : ''} nel browser`}
           contentStyle={{ minHeight: 48 }} style={{ borderRadius: 14 }}>
           {officialLink.isPdf ? 'Apri guida PDF' : 'Visita il sito ufficiale'}
