@@ -20,7 +20,7 @@ export default function MapScreen() {
     <PaperText variant="titleLarge" style={styles.heading}>Esplora Lucca sulla mappa</PaperText>
     <PaperText variant="bodyMedium" style={styles.hint}>Tocca un pin per scoprire l’attrazione.</PaperText>
     <View style={[styles.mapFrame, { aspectRatio: mapAspectRatio }]}>
-      <ImageBackground source={{ uri: mapUrl }} resizeMode="cover" style={styles.mapImage} imageStyle={styles.mapImageRadius}>
+      <ImageBackground source={{ uri: mapUrl }} resizeMode="contain" style={styles.mapImage} imageStyle={styles.mapImageRadius}>
         {places.map((place) => <Pressable key={place.id} accessibilityLabel={`Apri ${place.name}`} style={[styles.pin, pinPositions[place.id]]} onPress={() => setSelectedPlace(place)}><PaperText style={styles.pinText}>📍</PaperText></Pressable>)}
       </ImageBackground>
     </View>
