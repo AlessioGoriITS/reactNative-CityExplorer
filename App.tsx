@@ -8,6 +8,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import { FavoritesProvider } from './src/context/FavoritesContext';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -35,7 +36,7 @@ function AppNavigation() {
 }
 
 export default function App() {
-  return <ThemeProvider><ThemedApp /></ThemeProvider>;
+  return <ThemeProvider><FavoritesProvider><ThemedApp /></FavoritesProvider></ThemeProvider>;
 }
 
 function ThemedApp() {

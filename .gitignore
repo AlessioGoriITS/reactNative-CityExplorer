@@ -4,3 +4,6 @@ dist/
 *.log
 .DS_Store
 CODEX_WORKLOG.md
+.idea/
+/android/
+/ios/

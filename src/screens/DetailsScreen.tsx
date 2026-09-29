@@ -10,10 +10,12 @@ import { placePhotos } from '../data/placePhotos';
 import PlacePhoto from './PlacePhoto';
 import { useColors } from '../context/ThemeContext';
 import { placeIcon } from './HomeScreen';
+import { useFavorites } from '../context/FavoritesContext';
 
 export default function DetailsScreen({ route }: NativeStackScreenProps<RootStackParamList, 'Details'>) {
   const place = places.find(p => p.id === route.params.placeId);
-  const [favorite, setFavorite] = useState(false);
+  const { ids, ready, saving, toggle } = useFavorites();
+  const favorite = ids.includes(route.params.placeId);
   const [openingLink, setOpeningLink] = useState(false);
   const officialLink = place ? officialLinks[place.id] : undefined;
   async function openLink(url?: string) {
@@ -59,8 +61,8 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
         </Button>
       </View>}
     </View>
-    <Button icon={favorite ? 'heart' : 'heart-outline'} mode={favorite ? 'contained-tonal' : 'contained'} onPress={() => setFavorite(v => !v)} contentStyle={{ minHeight: 52 }} style={{ borderRadius: 16 }}>{favorite ? 'Selezionato' : 'Mi piace questo luogo'}</Button>
-    <Text style={[styles.note, { color: c.muted }]}>La selezione resta attiva mentre questa scheda è aperta.</Text>
+    <Button icon={favorite ? 'heart' : 'heart-outline'} mode={favorite ? 'contained-tonal' : 'contained'} disabled={!ready || saving} loading={saving} onPress={() => toggle(place.id)} contentStyle={{ minHeight: 52 }} style={{ borderRadius: 16 }}>{favorite ? 'Rimuovi dai preferiti' : 'Salva nei preferiti'}</Button>
+    <Text style={[styles.note, { color: c.muted }]}>La tua raccolta viene salvata su questo dispositivo.</Text>
   </ScrollView>;
 }
 const styles = StyleSheet.create({
