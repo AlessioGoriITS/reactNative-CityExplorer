@@ -1,0 +1,30 @@
+// Pagine individuate sui portali ufficiali di Lucca; verifica: 29 settembre 2026.
+// Il link è facoltativo: le future attrazioni possono non avere una pagina dedicata.
+export type OfficialLink = { url: string; publisher: string; isPdf: boolean };
+export const officialLinks: Partial<Record<string, OfficialLink>> = {
+  '1': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/le-mura-di-lucca-un-parco-urbano/', publisher: 'Comune di Lucca', isPdf: false },
+  '2': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/anfiteatro-romano/', publisher: 'Comune di Lucca', isPdf: false },
+  '3': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/torre-guinigi/', publisher: 'Comune di Lucca', isPdf: false },
+  '4': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/cattedrale-e-campanile-di-san-martino/', publisher: 'Comune di Lucca', isPdf: false },
+  '5': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/museo-casa-natale-di-giacomo-puccini/', publisher: 'Comune di Lucca', isPdf: false },
+  '6': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/basilica-di-s-frediano/', publisher: 'Comune di Lucca', isPdf: false },
+  '7': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/chiesa-di-s-michele/', publisher: 'Comune di Lucca', isPdf: false },
+  '8': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/torre-delle-ore/', publisher: 'Comune di Lucca', isPdf: false },
+  '9': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/orto-botanico/', publisher: 'Comune di Lucca', isPdf: false },
+  '10': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-pfanner/', publisher: 'Turismo Lucca', isPdf: false },
+  '11': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/piazza-napoleone/', publisher: 'Turismo Lucca', isPdf: false },
+  '12': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/teatro-del-giglio-giacomo-puccini/', publisher: 'Turismo Lucca', isPdf: false },
+  '13': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/pinacoteca-nazionale-di-palazzo-mansi/', publisher: 'Comune di Lucca', isPdf: false },
+  '14': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/museo-nazionale-di-villa-guinigi/', publisher: 'Comune di Lucca', isPdf: false },
+  '15': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/complesso-museale-della-cattedrale-e-chiesa-di-s-giovanni/', publisher: 'Comune di Lucca', isPdf: false },
+  '16': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/domus-romana-casa-del-fanciullo-sul-delfino/', publisher: 'Comune di Lucca', isPdf: false },
+  '17': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/via-fillungo/', publisher: 'Turismo Lucca', isPdf: false },
+  '18': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/piazza-san-michele/', publisher: 'Turismo Lucca', isPdf: false },
+  '19': { url: 'https://turismo.lucca.it/le-mura-lucca/ri-conoscere-le-mura/san-donato/', publisher: 'Turismo Lucca', isPdf: false },
+  '20': { url: 'https://www.comune.lucca.it/app/uploads/sites/4/2025/07/CartinaMura.pdf', publisher: 'Comune di Lucca', isPdf: true },
+  '21': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/giardini/parco-dellacquedotto/', publisher: 'Turismo Lucca', isPdf: false },
+  '22': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/museo-dellantica-zecca-di-lucca/', publisher: 'Comune di Lucca', isPdf: false },
+  '23': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-ducale/', publisher: 'Turismo Lucca', isPdf: false },
+  '24': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/chiesa-di-s-francesco/', publisher: 'Comune di Lucca', isPdf: false },
+  '25': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/museo-barsanti-e-matteucci/', publisher: 'Comune di Lucca', isPdf: false },
+};

@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Linking, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Icon, Text } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../../App';
 import { places } from '../data/places';
+import { officialLinks } from '../data/officialLinks';
 import { useColors } from '../context/ThemeContext';
 import { placeIcon } from './HomeScreen';
 
 export default function DetailsScreen({ route }: NativeStackScreenProps<RootStackParamList, 'Details'>) {
   const place = places.find(p => p.id === route.params.placeId);
   const [favorite, setFavorite] = useState(false);
+  const [openingLink, setOpeningLink] = useState(false);
+  const officialLink = place ? officialLinks[place.id] : undefined;
+  async function openOfficialLink() {
+    if (!officialLink || openingLink) return;
+    setOpeningLink(true);
+    try {
+      await Linking.openURL(officialLink.url);
+    } catch {
+      Alert.alert('Link non aperto', 'Non è stato possibile aprire il sito. Riprova tra poco.');
+    } finally {
+      setOpeningLink(false);
+    }
+  }
   const c = useColors();
   const insets = useSafeAreaInsets();
   if (!place) return <View style={styles.content}><Text>Questo luogo non è disponibile.</Text></View>;
@@ -25,6 +39,17 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
     <View style={[styles.panel, { backgroundColor: c.surface, borderColor: c.border }]}>
       <Text style={[styles.heading, { color: c.text }]}>Il luogo, la sua storia</Text>
       <Text style={[styles.description, { color: c.muted }]}>{place.description}</Text>
+      {officialLink && <View style={[styles.official, { borderTopColor: c.border }]}>
+        <Text style={[styles.heading, { color: c.text }]}>Informazioni ufficiali</Text>
+        <Text style={{ color: c.muted, fontSize: 13, lineHeight: 20, marginBottom: 12 }}>
+          {officialLink.publisher}{officialLink.isPdf ? ' · Guida delle Mura in PDF' : ' · Approfondisci il luogo'}
+        </Text>
+        <Button icon="open-in-new" mode="outlined" onPress={openOfficialLink} loading={openingLink} disabled={openingLink}
+          accessibilityRole="link" accessibilityLabel={`Apri ${officialLink.publisher}${officialLink.isPdf ? ', documento PDF' : ''} nel browser`}
+          contentStyle={{ minHeight: 48 }} style={{ borderRadius: 14 }}>
+          {officialLink.isPdf ? 'Apri guida PDF' : 'Visita il sito ufficiale'}
+        </Button>
+      </View>}
     </View>
     <Button icon={favorite ? 'heart' : 'heart-outline'} mode={favorite ? 'contained-tonal' : 'contained'} onPress={() => setFavorite(v => !v)} contentStyle={{ minHeight: 52 }} style={{ borderRadius: 16 }}>{favorite ? 'Selezionato' : 'Mi piace questo luogo'}</Button>
     <Text style={[styles.note, { color: c.muted }]}>La selezione resta attiva mentre questa scheda è aperta.</Text>
@@ -40,6 +65,7 @@ const styles = StyleSheet.create({
   location: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 12 },
   panel: { marginVertical: 28, borderWidth: 1, padding: 22, borderRadius: 20 },
   heading: { fontWeight: '700', fontSize: 17, marginBottom: 12 },
+  official: { borderTopWidth: StyleSheet.hairlineWidth, paddingTop: 20, marginTop: 24 },
   description: { fontSize: 16, lineHeight: 27 },
   note: { textAlign: 'center', fontSize: 12, lineHeight: 18, marginTop: 12 },
 });
