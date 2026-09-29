@@ -1,0 +1,6 @@
+import React, { createContext, useContext, useMemo, useState } from 'react';
+import { useColorScheme } from 'react-native';
+type ThemeContextValue = { isDark: boolean; toggleTheme: () => void };
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+export function ThemeProvider({ children }: { children: React.ReactNode }) { const [isDark, setIsDark] = useState(useColorScheme() === 'dark'); const value = useMemo(() => ({ isDark, toggleTheme: () => setIsDark((current) => !current) }), [isDark]); return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>; }
+export function useTheme() { const context = useContext(ThemeContext); if (!context) throw new Error('useTheme deve essere usato dentro ThemeProvider'); return context; }
