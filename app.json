@@ -5,7 +5,18 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "splash": { "resizeMode": "contain", "backgroundColor": "#0F172A" },
-    "assetBundlePatterns": ["**/*"]
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0F172A"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.anonymous.cityexplorer"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
   }
 }

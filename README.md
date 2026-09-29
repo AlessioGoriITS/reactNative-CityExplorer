@@ -15,14 +15,24 @@ App mobile React Native per scoprire luoghi, monumenti e attrazioni di Lucca.
 
 ## Avvio del progetto
 
-Requisiti: Node.js LTS, npm ed Expo Go su dispositivo oppure un emulatore Android/iOS.
+Requisiti per provare l’app: Node.js LTS, npm ed Expo Go su dispositivo oppure un emulatore Android/iOS.
 
 ```bash
 npm install
 npm start
 ```
 
-Da Expo si può poi premere `a` per Android, `i` per iOS oppure `w` per il browser.
+Da Expo si può poi premere `a` per Android, `i` per iOS oppure `w` per il browser. In alternativa è possibile scansionare il QR code con Expo Go.
+
+### Build Android nativa opzionale
+
+Per compilare una build nativa con Android Studio è necessario avere Android SDK, `adb` e una versione Java compatibile con la toolchain Expo/Gradle del progetto, normalmente JDK 17 o JDK 21:
+
+```bash
+npx expo run:android
+```
+
+Questa configurazione serve soltanto per la compilazione nativa Android. Non è necessaria per provare l’app con Expo Go e non richiede credenziali o dati esterni.
 
 ## Struttura
 

@@ -8,12 +8,14 @@ import HomeScreen from './src/screens/HomeScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import MapScreen from './src/screens/MapScreen';
 
 export type RootStackParamList = {
   Home: undefined;
   Details: { placeId: string };
   Favorites: undefined;
   Settings: undefined;
+  Map: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -28,6 +30,7 @@ function AppNavigation() {
         <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Dettagli' }} />
         <Stack.Screen name="Favorites" component={FavoritesScreen} options={{ title: 'Preferiti' }} />
         <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Impostazioni' }} />
+        <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Mappa di Lucca' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
