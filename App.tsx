@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
+import { PaperProvider, MD3DarkTheme, MD3LightTheme } from 'react-native-paper';
 import { ThemeProvider, useTheme } from './src/context/ThemeContext';
 import HomeScreen from './src/screens/HomeScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
@@ -33,5 +34,10 @@ function AppNavigation() {
 }
 
 export default function App() {
-  return <ThemeProvider><AppNavigation /></ThemeProvider>;
+  return <ThemeProvider><ThemedApp /></ThemeProvider>;
+}
+
+function ThemedApp() {
+  const { isDark } = useTheme();
+  return <PaperProvider theme={isDark ? MD3DarkTheme : MD3LightTheme}><AppNavigation /></PaperProvider>;
 }
