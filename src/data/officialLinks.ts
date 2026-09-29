@@ -27,4 +27,8 @@ export const officialLinks: Partial<Record<string, OfficialLink>> = {
   '23': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-ducale/', publisher: 'Turismo Lucca', isPdf: false },
   '24': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/chiesa-di-s-francesco/', publisher: 'Comune di Lucca', isPdf: false },
   '25': { url: 'https://www.comune.lucca.it/vivere-il-comune/luoghi/museo-barsanti-e-matteucci/', publisher: 'Comune di Lucca', isPdf: false },
+  '26': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/ville/villa-bottini/', publisher: 'Turismo Lucca', isPdf: false },
+  '27': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/chiese/chiesa-di-santa-caterina/', publisher: 'Turismo Lucca', isPdf: false },
+  '28': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/palazzi/palazzo-orsetti/', publisher: 'Turismo Lucca', isPdf: false },
+  '29': { url: 'https://turismo.lucca.it/le-attrazioni-di-lucca/monumenti-e-piazze/piazza-san-francesco/', publisher: 'Turismo Lucca', isPdf: false },
 };

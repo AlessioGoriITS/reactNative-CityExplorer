@@ -6,6 +6,8 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../../App';
 import { places } from '../data/places';
 import { officialLinks } from '../data/officialLinks';
+import { placePhotos } from '../data/placePhotos';
+import PlacePhoto from './PlacePhoto';
 import { useColors } from '../context/ThemeContext';
 import { placeIcon } from './HomeScreen';
 
@@ -29,10 +31,15 @@ export default function DetailsScreen({ route }: NativeStackScreenProps<RootStac
   const insets = useSafeAreaInsets();
   if (!place) return <View style={styles.content}><Text>Questo luogo non è disponibile.</Text></View>;
   return <ScrollView style={{ backgroundColor: c.background }} contentContainerStyle={[styles.content, { paddingBottom: 24 + insets.bottom }]}>
-    <View style={[styles.hero, { backgroundColor: c.tint }]}>
+    {placePhotos[place.id] ? <View>
+      <View style={{ borderRadius: 24, overflow: 'hidden' }}><PlacePhoto key={place.id} id={place.id} /></View>
+      <Button icon="open-in-new" onPress={openOfficialLink} disabled={openingLink} accessibilityRole="link"
+        accessibilityLabel="Apri la fonte della fotografia su Turismo Lucca" labelStyle={{ fontSize: 12 }}
+        contentStyle={{ minHeight: 44 }}>Fonte foto: Turismo Lucca</Button>
+    </View> : <View style={[styles.hero, { backgroundColor: c.tint }]}>
       <View style={[styles.symbol, { borderColor: c.primary }]}><Icon source={placeIcon(place.category)} size={62} color={c.primary} /></View>
       <Text style={[styles.heroLabel, { color: c.primary }]}>LUCCA · CITYEXPLORER</Text>
-    </View>
+    </View>}
     <Text style={[styles.category, { color: c.primary }]}>{place.category.toLocaleUpperCase('it')}</Text>
     <Text accessibilityRole="header" style={[styles.title, { color: c.text }]}>{place.name}</Text>
     <View style={styles.location}><Icon source="map-marker-outline" size={18} color={c.muted} /><Text style={{ color: c.muted }}>Lucca, Toscana</Text></View>

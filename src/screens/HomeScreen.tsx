@@ -6,6 +6,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../../App';
 import { places } from '../data/places';
 import { useColors } from '../context/ThemeContext';
+import PlacePhoto from './PlacePhoto';
 
 const mapUrl = 'https://www.informagiovani-italia.com/mappa-lucca2.jpg';
 export function placeIcon(category: string) {
@@ -56,6 +57,8 @@ export default function HomeScreen({ navigation }: NativeStackScreenProps<RootSt
         </>}
         renderItem={({ item, index }) => <View style={[styles.card, { backgroundColor: c.surface, borderColor: c.border }]}>
           <TouchableRipple onPress={() => navigation.navigate('Details', { placeId: item.id })} accessibilityRole="button" accessibilityLabel={`Apri ${item.name}`}>
+            <View>
+            <PlacePhoto key={item.id} id={item.id} />
             <View style={styles.cardBody}>
               <View style={styles.cardTop}>
                 <View style={[styles.iconTile, { backgroundColor: c.tint }]}><Icon source={placeIcon(item.category)} size={25} color={c.primary} /></View>
@@ -65,6 +68,7 @@ export default function HomeScreen({ navigation }: NativeStackScreenProps<RootSt
               <Text style={[styles.cardTitle, { color: c.text }]}>{item.name}</Text>
               <Text numberOfLines={2} style={[styles.description, { color: c.muted }]}>{item.description}</Text>
               <View style={[styles.cardFooter, { borderTopColor: c.border }]}><Text style={{ color: c.primary, fontSize: 13, fontWeight: '600' }}>Scopri il luogo</Text><Icon source="arrow-right" size={19} color={c.primary} /></View>
+            </View>
             </View>
           </TouchableRipple>
         </View>}
